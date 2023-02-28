@@ -1,0 +1,12 @@
+.styled-list {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    background-color: orange;
+}
+
+.styled-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

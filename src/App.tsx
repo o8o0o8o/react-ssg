@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { Link, Route, Routes } from "react-router-dom";
 
 const PagePathsWithComponents = import.meta.glob("./pages/*.tsx", {
@@ -18,14 +19,7 @@ export function App() {
   return (
     <>
       <nav>
-        <ul
-          style={{
-            display: "flex",
-            gap: "30px",
-            listStyle: "none",
-            backgroundColor: "orange",
-          }}
-        >
+        <ul className="styled-list">
           {routes.map(({ name, path }) => {
             return (
               <li key={path}>
@@ -41,13 +35,7 @@ export function App() {
             key={path}
             path={path}
             element={
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <div className="styled-nav">
                 <Component />
               </div>
             }
