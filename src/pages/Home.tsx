@@ -12,6 +12,7 @@ export default function Home() {
       <button onClick={() => setCounter((prevState) => prevState + 1)}>
         Click me!
       </button>
+      <p>some text</p>
     </div>
   );
 }
