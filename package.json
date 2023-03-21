@@ -12,7 +12,7 @@
     "eject": "react-scripts eject",
     "build:prod": "rm -rf ./dist && webpack --config webpack/prod/webpack.prod.server.js --config webpack/prod/webpack.prod.client.js",
     "build:dev": "rm -rf ./dist && webpack --config webpack/dev/webpack.dev.server.js --config webpack/dev/webpack.dev.client.js",
-    "generate": "ts-node src/server/generate.ts",
+    "generate": "npm run build:prod && ts-node src/server/generate.ts",
     "serve": "cross-env NODE_ENV=production ts-node src/server/static.ts"
   },
   "repository": {
