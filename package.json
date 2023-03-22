@@ -2,17 +2,8 @@
   "name": "react-ssg",
   "version": "2.0.0",
   "scripts": {
-    "start": "rm -rf dist && webpack --mode=development --config webpack/dev/webpack.dev.server.js --config webpack/dev/webpack.dev.client.js && node dist/server.js",
-    "startWatch": "npm-run-all --parallel startWatch:*",
-    "startWatch:server": "nodemon --watch dist --exec node dist/server.js",
-    "startWatch:build-server": "webpack --config webpack/dev/webpack.dev.server.js --watch",
-    "startWatch:build-client": "webpack --config  webpack/dev/webpack.dev.client.js --watch --no-cache",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:prod": "rm -rf ./dist && webpack --config webpack/prod/webpack.prod.server.js --config webpack/prod/webpack.prod.client.js",
-    "build:dev": "rm -rf ./dist && webpack --config webpack/dev/webpack.dev.server.js --config webpack/dev/webpack.dev.client.js",
-    "generate": "npm run build:prod && ts-node src/server/generate.ts",
+    "build": "rm -rf ./dist && webpack --config webpack/prod/webpack.prod.server.js --config webpack/prod/webpack.prod.client.js",
+    "generate": "rm -rf ./dist/static && npm run build && ts-node src/server/generate.ts",
     "serve": "cross-env NODE_ENV=production ts-node src/server/static.ts"
   },
   "repository": {

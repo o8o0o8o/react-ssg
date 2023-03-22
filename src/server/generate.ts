@@ -13,9 +13,7 @@ const routesToPrerender = fs.readdirSync("src/pages").map((file) => {
 
     try {
       fs.mkdirSync(`dist/static`);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
 
     const filePath = `dist/static${url === "/" ? "/index" : url}.html`;
 
