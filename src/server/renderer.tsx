@@ -4,29 +4,21 @@ import { StaticRouter } from "react-router-dom";
 import express from "express";
 import App from "../client/App/App";
 import { renderRoutes } from "react-router-config";
-import Home from "../pages/Home";
-import About from "../pages/About";
 
-const routes = [
-  {
-    path: "/",
-    exact: true,
-    component: Home,
-  },
-  {
-    path: "/about",
-    exact: true,
-    component: About,
-  },
-];
+import { ServerStyleSheet } from "styled-components";
+import routes from "../shared/routes";
 
 export default (req: express.Request) => {
+  const sheet = new ServerStyleSheet();
   const content = renderToString(
-    <StaticRouter location={req.url} context={{}}>
-      <App />
-      {renderRoutes(routes)}
-    </StaticRouter>
+    sheet.collectStyles(
+      <StaticRouter location={req.url} context={{}}>
+        <App />
+        {renderRoutes(routes)}
+      </StaticRouter>
+    )
   );
+  const styles = sheet.getStyleTags();
 
   return `<html lang="en">
   <head>
@@ -34,6 +26,7 @@ export default (req: express.Request) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React SSG</title>
+    ${styles}
   </head>
   <body>
     <div id="root">${content}</div>
